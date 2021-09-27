@@ -1,3 +1,3 @@
 git add .
-git commit
+git commit -m "standard commit message"
 git push origin main
