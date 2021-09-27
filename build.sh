@@ -1,1 +1,1 @@
-echo testfire!
+node testAllQuotes.js
