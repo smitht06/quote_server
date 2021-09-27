@@ -33,5 +33,6 @@ jobs:
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
+                  ls
 
             
