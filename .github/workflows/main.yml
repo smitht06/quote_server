@@ -30,6 +30,7 @@ jobs:
               run: |
                   cd quoterepo/serverSide
                   node testAllQuotes.js
+                  cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
 
