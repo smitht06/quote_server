@@ -13,24 +13,24 @@ function logFail(tName){
 let aq01 = new AllQuotes();
 aq01.addQuote("Every man is guilty of all the good he didn't do.");
 aq01.addQuote("Before you embark on a journey of revenge, dig two graves.");
-let res01 = aq01.findQuote("graes");
-if (res01.search("Before you embark") > -1){
+let res01 = aq01.findQuote("graves");
+if (res01.search("Before you embrk") > -1){
     logPass("T01");
 } else {
     logFail("T01");
 }
 // T02 - Search for a quote and fail
-let res02 = aq01.findQuote("mising");
-if (res02.search("No matching quote") > -1){
+let res02 = aq01.findQuote("missing");
+if (res02.search("No matcing quote") > -1){
     logPass("T02");
 } else {
     logFail("T02");
 }
 // T03 - Load from file
 let aq03 = new AllQuotes();
-aq03.loadFromFile("../data/3_quotes.cv");
+aq03.loadFromFile("../data/3_quotes.csv");
 let res03 = aq03.findQuote("smiles");
-if (res03.search("indicate where smiles have been") > -1){
+if (res03.search("indicate where smiles hve been") > -1){
     logPass("T03");
 } else {
     logFail("T03");
