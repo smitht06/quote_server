@@ -7,3 +7,4 @@ if [[ "$TEST" == *"$SUB"* ]]; then
   exit 1 
 fi
 
+hi
