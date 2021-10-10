@@ -9,18 +9,18 @@ function logPass(tName){
 function logFail(tName){
     console.log("FAIL - " + tName )
 }
-// T01 - Search for a quote and suceed
+// T01 - Search for a quote and succeed
 let aq01 = new AllQuotes();
 aq01.addQuote("Every man is guilty of all the good he didn't do.");
 aq01.addQuote("Before you embark on a journey of revenge, dig two graves.");
-let res01 = aq01.findQuote("graves");
+let res01 = aq01.findQuote("graes");
 if (res01.search("Before you embark") > -1){
     logPass("T01");
 } else {
     logFail("T01");
 }
 // T02 - Search for a quote and fail
-let res02 = aq01.findQuote("missing");
+let res02 = aq01.findQuote("mising");
 if (res02.search("No matching quote") > -1){
     logPass("T02");
 } else {
@@ -28,7 +28,7 @@ if (res02.search("No matching quote") > -1){
 }
 // T03 - Load from file
 let aq03 = new AllQuotes();
-aq03.loadFromFile("../data/3_quotes.csv");
+aq03.loadFromFile("../data/3_quotes.cv");
 let res03 = aq03.findQuote("smiles");
 if (res03.search("indicate where smiles have been") > -1){
     logPass("T03");
