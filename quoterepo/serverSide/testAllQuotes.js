@@ -1,7 +1,7 @@
 // Run a set of unit tests of the AllQuotes class
 // To execute, cd to the serverSide directory and give command:
 //   node testAllQuotes.js
-//   - N. Wilde, July 2020
+//   - N. Wilde, July 202
 const AllQuotes = require('./AllQuotes');
 function logPass(tName){
     console.log("PASS - " + tName);
