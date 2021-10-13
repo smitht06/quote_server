@@ -29,7 +29,6 @@ jobs:
             - name: Run build/test script
               run: |
                   cd quoterepo/serverSide
-                  node testAllQuotes.js
 
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
