@@ -2,6 +2,7 @@
 // First load quotes using loadFromFile() or addQuote()
 // Then search using findQuote
 //   - N. Wilde, July 2020
+//comment
 class AllQuotes {
 	quoteArray = [];
 
