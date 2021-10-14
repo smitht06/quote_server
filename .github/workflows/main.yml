@@ -28,7 +28,7 @@ jobs:
             # Runs a single command using the runners shell
             - name: Run build/test script
               run: |
-                  awscli -v
+                  aws --version
 
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
