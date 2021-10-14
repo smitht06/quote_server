@@ -56,5 +56,7 @@ jobs:
                   export MY_KEY_PAIR="engclass"
                   export MY_PUBLIC_SUBNET="subnet-d5654bb3"
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
-                  ssh -i "${{ secrets.ENGCLASS }}" root@ec2-3-238-57-128.compute-1.amazonaws.com
+                  echo "${{ secrets.ENGCLASS }}" > engclass.pem 
+                  chmod 400 engclass.pem
+                  ssh -i engclass.pem root@ec2-3-238-57-128.compute-1.amazonaws.com
                   
