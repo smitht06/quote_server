@@ -29,6 +29,7 @@ jobs:
             - name: Run build/test script
               run: |
                   aws --version
+                  cd quoterepo/serverSide
 
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
