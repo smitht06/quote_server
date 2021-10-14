@@ -29,6 +29,11 @@ jobs:
             - name: Run build/test script
               run: |
                   aws --version
+                  aws configure
+                  ${{secrets.ACCESSKEYID}}
+                  ${{secrets.SECRETACCESSKEY}}
+                  us-east-1  
+                  <ENTER>
                   cd quoterepo/serverSide
 
                   TEST=$(node testAllQuotes.js)
