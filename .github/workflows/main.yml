@@ -37,7 +37,7 @@ jobs:
             - name: Run build/test script
               run: |
                   aws --version
-                  aws configure
+                  
                   cd quoterepo/serverSide
 
                   TEST=$(node testAllQuotes.js)
@@ -51,4 +51,5 @@ jobs:
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
-                  
+                  aws s3 --dryrun cp deployment.tar.gz\
+                  "s3://asmit-work-bucket/deployment.tar.gz"
