@@ -58,5 +58,6 @@ jobs:
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
                   
                   echo "${{ secrets.ENGCLASS }}" > engclass.pem
-                  ssh -i "engclass.pem" ec2-user@ec2-3-238-57-128.compute-1.amazonaws.com
                   ls
+                  ssh -i "engclass.pem" ec2-user@ec2-3-238-57-128.compute-1.amazonaws.com
+                  
