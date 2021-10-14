@@ -52,3 +52,4 @@ jobs:
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
                   aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
+                  export AWS_LINUX_AMI="ami-0f533193acb81b338"
