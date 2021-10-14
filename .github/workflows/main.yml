@@ -56,4 +56,6 @@ jobs:
                   export MY_KEY_PAIR="engclass"
                   export MY_PUBLIC_SUBNET="subnet-d5654bb3"
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
-                  aws --region us-east-1 ec2 run-instances --image-id $AWS_LINUX_AMI --count 1 --instance-type t2.micro --subnet-id $MY_PUBLIC_SUBNET --security-group-ids $MY_SECURITY_GROUP --key-name $MY_KEY_PAIR
+                  aws --region us-east-1 ec2 run-instances --dryrun --image-id $AWS_LINUX_AMI --count 1 --instance-type t2.micro --subnet-id $MY_PUBLIC_SUBNET --security-group-ids $MY_SECURITY_GROUP --key-name $MY_KEY_PAIR
+                  echo "${{ secrets.ENGCLASS }}" > engclass.pem
+                  ls
