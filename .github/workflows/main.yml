@@ -24,14 +24,20 @@ jobs:
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - uses: actions/checkout@v2
+              with:
+                aws_key_id : ${{ secrets.ACCESSKEYID }}
+                aws_secret_key : ${{ secrets.SECRETACCESSKEY }}
 
             # Runs a single command using the runners shell
             - name: Run build/test script
               run: |
                   aws --version
                   aws configure
-                  ${{secrets.ACCESSKEYID}}
-                  ${{secrets.SECRETACCESSKEY}}
+                  "$aws_key_id" \
+                  "$aws_secret_key" \
+                  us-east-1 \
+                  \
+                  
                   us-east-1  
                   <ENTER>
                   cd quoterepo/serverSide
