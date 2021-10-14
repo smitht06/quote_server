@@ -56,5 +56,6 @@ jobs:
                   export MY_KEY_PAIR="engclass"
                   export MY_PUBLIC_SUBNET="subnet-d5654bb3"
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
+                  ls
                   aws --region us-east-1 ec2 run-instances --image-id $AWS_LINUX_AMI --count 1 --user-data file://userdata.txt
                  
