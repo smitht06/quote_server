@@ -48,6 +48,7 @@ jobs:
                     echo 'Unit tests fail'
                     exit 1 
                     fi
+                  aws s3 cp start.sh "s3://asmit-work-bucket/start.sh"
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
