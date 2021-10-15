@@ -1,9 +1,9 @@
 #!/bin/bash
 sudo su ec2-user
 yum update -y
-npm install -g pm2
 aws s3 cp "s3://asmit-work-bucket/deployment.tar.gz" deployment.tar.gz
 gunzip deployment.tar.gz
 tar -xf deployment.tar
 cd serverSide
+npm install -g pm2
 pm2 start server.js
