@@ -1,10 +1,1 @@
 #!/bin/bash
-cd /
-yum update -y
-sudo su ec2-user
-aws s3 cp "s3://asmit-work-bucket/deployment.tar.gz" deployment.tar.gz
-gunzip deployment.tar.gz
-tar -xf deployment.tar
-cd serverSide
-npm install -g pm2
-pm2 start server.js
