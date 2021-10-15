@@ -6,5 +6,5 @@ sudo aws s3 cp "s3://asmit-work-bucket/deployment.tar.gz" deployment.tar.gz
 sudo gunzip deployment.tar.gz
 sudo tar -xf deployment.tar
 cd serverSide
-npm install -g pm2
+npm install pm2@latest -g
 pm2 start server.js
