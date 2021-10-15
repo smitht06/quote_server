@@ -1,8 +1,7 @@
 #!/bin/bash
-sudo su
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-. ~/.nvm/nvm.sh
-nvm install node
+cd /
+yum update -y
+sudo su ec2-user
 aws s3 cp "s3://asmit-work-bucket/deployment.tar.gz" deployment.tar.gz
 gunzip deployment.tar.gz
 tar -xf deployment.tar
