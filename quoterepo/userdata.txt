@@ -1,5 +1,5 @@
 #!/bin/bash
-script /var/tmp/screen.log
+script screen.log
 yum update -y
 sudo aws s3 cp "s3://asmit-work-bucket/start.sh" start.sh
 sudo chmod +x start.sh 
