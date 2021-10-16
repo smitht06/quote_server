@@ -1,5 +1,4 @@
 #!/bin/bash
-\. /home/ec2-user/.bashrc
 script screen.log
 yum update -y
 sudo aws s3 cp "s3://asmit-work-bucket/start.sh" start.sh
