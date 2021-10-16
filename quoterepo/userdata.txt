@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "script starting"
+echo "script starting" > /var/tmp/starting.txt
 yum update -y
 sudo aws s3 cp "s3://asmit-work-bucket/start.sh" start.sh
 sudo chmod +x start.sh 
