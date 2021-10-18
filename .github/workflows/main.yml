@@ -66,5 +66,5 @@ jobs:
                    --application-name quote \
                    --deployment-group-name quote \
                    --deployment-config-name CodeDeployDefault.OneAtATime \
-                   --s3-location bucket=amsit-work-bucket, key=deployment.tar.gz, bundleType=tgz \
+                   --s3-location bucket=amsit-work-bucket,key=deployment.tar.gz,bundleType=tgz \
                          
