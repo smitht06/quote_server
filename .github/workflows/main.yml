@@ -49,13 +49,13 @@ jobs:
                     exit 1 
                     fi
             - name: AWS Deploy push
-                run: |
-                    aws deploy push \
-                    --application-name quote \
-                    --description "This is a revision" \
-                    --ignore-hidden-files \
-                    --s3-location s3://asmit-work-bucket/deployment.tar.gz \
-                    --source .      
+              run: |
+                aws deploy push \
+                 --application-name quote \
+                 --description "This is a revision" \
+                 --ignore-hidden-files \
+                 --s3-location s3://asmit-work-bucket/deployment.tar.gz \
+                 --source .      
             - name: Create CodeDeploy Deployment
               id: deploy
               run: |
