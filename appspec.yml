@@ -2,13 +2,13 @@ version: 0.0
 os: linux
 files:
  - source: .
-   destination: /home/ec2-user/app
+   destination: /home/ec2-user/quoterepo
 hooks:
   AfterInstall:
    - location: scripts/installDep
      timeout: 300
-     runas: ec2-user
+     runas: root
   ApplicationStart:
    - location: scripts/start
      timeout: 300
-     runas: ec2-user
+     runas: root
