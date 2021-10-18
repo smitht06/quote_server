@@ -7,4 +7,3 @@ sudo gunzip deployment.tar.gz
 sudo tar -xf deployment.tar
 cd /serverSide
 npm install pm2@latest -g
-pm2 start server.js
