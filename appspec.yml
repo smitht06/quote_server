@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
  - source: .
-   destination: /home/ec2-user/quote_server/quoterepo
+   destination: /home/ec2-user/quoterepo
 hooks:
   AfterInstall:
    - location: scripts/installDep

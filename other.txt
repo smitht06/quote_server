@@ -1,0 +1,11 @@
+aws s3 cp start.sh "s3://asmit-work-bucket/start.sh"
+                  cd ..
+                  tar -cvf deployment.tar data serverSide
+                  gzip deployment.tar
+                  aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
+                  export AWS_LINUX_AMI="ami-070de37a0b98d13ad"
+                  export MY_KEY_PAIR="engclass"
+                  export MY_PUBLIC_SUBNET="subnet-d5654bb3"
+                  export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
+                  ls
+                  aws --region us-east-1 ec2 run-instances --image-id $AWS_LINUX_AMI --count 1 --instance-type t2.micro --subnet-id $MY_PUBLIC_SUBNET --security-group-ids $MY_SECURITY_GROUP --iam-instance-profile Name="ec2-s3" --key-name $MY_KEY_PAIR --tag-specifications 'ResourceType=instance, Tags=[{Key=name, Value=quote_server}]'
