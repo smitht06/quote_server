@@ -1,3 +1,4 @@
 #!/bin/bash
 source /home/ec2-user/.bash_profile
+yum install git -y
 git clone https://github.com/smitht06/quote_server.git
