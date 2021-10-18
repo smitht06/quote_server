@@ -52,7 +52,7 @@ jobs:
               run: |
                 aws deploy push \
                  --application-name quote \
-                 --description "This is a revision" \
+                 --description "This is a revision again" \
                  --ignore-hidden-files \
                  --s3-location s3://asmit-work-bucket/deployment.tar.gz \
                  --source .      
