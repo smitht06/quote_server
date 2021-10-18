@@ -32,7 +32,7 @@ function getResponseHTML(sString){
         sString = null;
     }
     // aQuote is a javascript object with the quote to return
-    let aQuote = {"theText" : "Please do a search"};
+    let aQuote = {"theText" : "Please do a soach"};
     if ((null !== sString) && (sString.length > 0)) {
         let searcher = new AllQuotes();
         // Load the collection of quotes
@@ -46,7 +46,7 @@ function getResponseHTML(sString){
     <html>
         <head>
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-            <title>Quote Server 2 Page</title>
+            <title>Quote Server Page</title>
         </head>
         <body>
             <h2>Quote Server</h2>
