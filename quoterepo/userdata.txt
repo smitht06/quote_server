@@ -1,8 +1,3 @@
 #!/bin/bash
 source /home/ec2-user/.bash_profile
-script screen.log
-yum update -y
-sudo aws s3 cp "s3://asmit-work-bucket/start.sh" start.sh
-sudo chmod +x start.sh 
-./hello.sh
-exit
+git clone https://github.com/smitht06/quote_server.git
