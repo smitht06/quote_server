@@ -64,5 +64,5 @@ jobs:
                    --deployment-group-name quote \
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
-                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=tgz \
+                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
                          
