@@ -58,7 +58,7 @@ jobs:
                   export MY_PUBLIC_SUBNET="subnet-d5654bb3"
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
                   ls
-                  aws --region us-east-1 ec2 run-instances --image-id $AWS_LINUX_AMI --count 1 --instance-type t2.micro --subnet-id $MY_PUBLIC_SUBNET --security-group-ids $MY_SECURITY_GROUP --iam-instance-profile Name="ec2-s3" --key-name $MY_KEY_PAIR --user-data file://userdata.txt --tag-specifications 'ResourceType=instance, Tags=[{Key=name, Value=quote_server}]'
+                  aws --region us-east-1 ec2 run-instances --image-id $AWS_LINUX_AMI --count 1 --instance-type t2.micro --subnet-id $MY_PUBLIC_SUBNET --security-group-ids $MY_SECURITY_GROUP --iam-instance-profile Name="ec2-s3" --key-name $MY_KEY_PAIR --tag-specifications 'ResourceType=instance, Tags=[{Key=name, Value=quote_server}]'
             - name: Create CodeDeploy Deployment
               id: deploy
               run: |
@@ -66,4 +66,5 @@ jobs:
                    --application-name quote \
                    --deployment-group-name quote \
                    --deployment-config-name CodeDeployDefault.OneAtATime \
+                   --s3-location bucket=amsit-work-bucket, key=deployment.tar.gz, bundleType=tgz \
                          
