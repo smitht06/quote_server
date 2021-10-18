@@ -48,6 +48,9 @@ jobs:
                     echo 'Unit tests fail'
                     exit 1 
                     fi
+                  cd ..
+                  tar -cvf deployment.tar data serverSide
+                  gzip deployment.tar  
             - name: AWS Deploy push
               run: |
                 aws deploy push \
