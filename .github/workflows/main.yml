@@ -36,18 +36,16 @@ jobs:
             # Runs a single command using the runners shell
             - name: Run build/test script
               run: |
-                  aws --version
-                  
                   cd quoterepo/serverSide
-
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
-
                   SUB='FAIL'
                   if [[ "$TEST" == *"$SUB"* ]]; then
                     echo 'Unit tests fail'
                     exit 1 
                     fi
+            - name: Run build/test script
+              run: |        
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
