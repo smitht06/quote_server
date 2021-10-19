@@ -48,6 +48,7 @@ jobs:
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
+                  curl "whats my ip"
                   
             - name: Start EC2 Test Instance
               run: |      
