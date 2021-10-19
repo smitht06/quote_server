@@ -36,22 +36,23 @@ jobs:
             # Runs a single command using the runners shell
             - name: Run build/test script
               run: |
+                  aws --version
+                  
                   cd quoterepo/serverSide
+
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
+
                   SUB='FAIL'
                   if [[ "$TEST" == *"$SUB"* ]]; then
                     echo 'Unit tests fail'
                     exit 1 
                     fi
                   cd ..
-                  ls  
-            - name: Run build/test script
-              run: |        
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
                   aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
-                  aws ec2 reboot-instances --instance-ids i-03fd5f81236535b8f 
+                  
             - name: AWS Deploy push
               run: |
                 aws deploy push \
