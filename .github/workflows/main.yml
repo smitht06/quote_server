@@ -48,12 +48,12 @@ jobs:
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
-                  aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
+                  
             - name: Start EC2 Test Instance
               run: |      
                   aws ec2 start-instances --instance-ids i-03fd5f81236535b8f
                   
-            - name: AWS Deploy push
+            - name: Push revision
               run: |
                 aws deploy push \
                  --application-name quote \
@@ -62,7 +62,7 @@ jobs:
                  --s3-location s3://asmit-work-bucket/deployment.tar.gz \
                  --source .      
 
-            - name: Create CodeDeploy Deployment
+            - name: Create Deployment
               run: |
                   aws deploy create-deployment \
                    --application-name quote \
