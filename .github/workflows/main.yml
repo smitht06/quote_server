@@ -36,7 +36,7 @@ jobs:
                   aws --version
                   
                   cd quoterepo/serverSide
-                  curl "whats my ip"  
+                  curl ifconfig.me 
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
 
