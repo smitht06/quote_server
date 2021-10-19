@@ -44,6 +44,7 @@ jobs:
                     echo 'Unit tests fail'
                     exit 1 
                     fi
+                  cd ..  
             - name: Run build/test script
               run: |        
                   tar -cvf deployment.tar data serverSide
