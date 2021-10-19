@@ -58,9 +58,9 @@ jobs:
                  --application-name quote \
                  --description "This is a revision again" \
                  --ignore-hidden-files \
-                 --s3-location s3://asmit-work-bucket/deployment.tar.gz \     
+                 --s3-location s3://asmit-work-bucket/deployment.tar.gz \
+                 --source .      
             - name: Create CodeDeploy Deployment
-              id: deploy
               run: |
                   aws deploy create-deployment \
                    --application-name quote \
