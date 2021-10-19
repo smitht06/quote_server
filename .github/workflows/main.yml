@@ -46,7 +46,6 @@ jobs:
                     fi
             - name: Run build/test script
               run: |        
-                  cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
                   aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
