@@ -70,6 +70,4 @@ jobs:
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
                    --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
-            - name: Create Pull Request
-              id: cpr
-              uses: peter-evans/create-pull-request@v3        
+            
