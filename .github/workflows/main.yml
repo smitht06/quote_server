@@ -52,11 +52,6 @@ jobs:
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
                   aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"  
-            - name: AWS Deploy push
-              run: |
-                aws deploy push \
-                 --application-name quote \
-                 --s3-location s3://asmit-work-bucket/deployment.tar.gz \   
             - name: Create CodeDeploy Deployment
               id: deploy
               run: |
