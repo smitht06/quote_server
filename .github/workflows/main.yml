@@ -52,7 +52,7 @@ jobs:
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
                   aws s3 cp deployment.tar.gz "s3://asmit-work-bucket/deployment.tar.gz"
-                  aws ec2 start-instances --instance-ids i-03fd5f81236535b8f 
+                  aws ec2 reboot-instances --instance-ids i-03fd5f81236535b8f 
             - name: AWS Deploy push
               run: |
                 aws deploy push \
