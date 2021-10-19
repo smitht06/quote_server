@@ -48,6 +48,7 @@ jobs:
                        fi
                    cd ..
                    tar -cvf deployment.tar data serverSide
+                   ls
                    gzip deployment.tar
   
   
