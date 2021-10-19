@@ -32,7 +32,7 @@ function getResponseHTML(sString){
         sString = null;
     }
     // aQuote is a javascript object with the quote to return
-    let aQuote = {"theText" : "Please do a find"};
+    let aQuote = {"theText" : "Please do a search"};
     if ((null !== sString) && (sString.length > 0)) {
         let searcher = new AllQuotes();
         // Load the collection of quotes
