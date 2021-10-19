@@ -36,7 +36,7 @@ jobs:
                   aws --version
                   
                   cd quoterepo/serverSide
-                  curl ifconfig.me 
+
                   TEST=$(node testAllQuotes.js)
                   echo "${TEST}"
 
@@ -48,7 +48,6 @@ jobs:
                   cd ..
                   tar -cvf deployment.tar data serverSide
                   gzip deployment.tar
-                  
                   
             - name: Start EC2 Test Instance
               run: |      
@@ -71,4 +70,4 @@ jobs:
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
                    --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
-            
+                         
