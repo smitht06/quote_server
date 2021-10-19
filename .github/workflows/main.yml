@@ -33,21 +33,24 @@ jobs:
  
             - name: Test and Zip
               run: |
-                  aws --version
-                  
-                  cd quoterepo/serverSide
-
-                  TEST=$(node testAllQuotes.js)
-                  echo "${TEST}"
-
-                  SUB='FAIL'
-                  if [[ "$TEST" == *"$SUB"* ]]; then
-                    echo 'Unit tests fail'
-                    exit 1 
-                    fi
-                  cd ..
-                  tar -cvf deployment.tar data serverSide
-                  gzip deployment.tar
+                   aws --version
+                    
+  
+                   cd quoterepo/serverSide
+                    
+                   TEST=$(node testAllQuotes.js)
+                   echo "${TEST}"
+                    
+                   SUB='FAIL'
+                   if [[ "$TEST" == *"$SUB"* ]]; then
+                       echo 'Unit tests fail'
+                       exit 1 
+                       fi
+                   cd ..
+                   tar -cvf deployment.tar data serverSide
+                   gzip deployment.tar
+  
+  
                   
             - name: Start EC2 Test Instance
               run: |      
