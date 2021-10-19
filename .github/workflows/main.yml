@@ -24,7 +24,6 @@ jobs:
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - uses: actions/checkout@v2
-            
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
               with:
@@ -32,9 +31,7 @@ jobs:
                 aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
                 aws-region: us-east-1
  
-
-            # Runs a single command using the runners shell
-            - name: Run build/test script
+            - name: Test, Zip, Upload to S3
               run: |
                   aws --version
                   
@@ -61,6 +58,7 @@ jobs:
                  --ignore-hidden-files \
                  --s3-location s3://asmit-work-bucket/deployment.tar.gz \
                  --source .      
+
             - name: Create CodeDeploy Deployment
               run: |
                   aws deploy create-deployment \
