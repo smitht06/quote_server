@@ -30,10 +30,14 @@ jobs:
                 aws-access-key-id: ${{ secrets.ACCESSKEYID}}
                 aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
                 aws-region: us-east-1
- 
+             steps:
+            - name: Public IP
+              id: ip
+              uses: haythem/public-ip@v1.2
+    
             - name: Test and Zip
               run: |
-                   aws --version
+                   echo ${{ steps.ip.outputs.ipv4 }}
                     
   
                    cd quoterepo/serverSide
