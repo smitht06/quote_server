@@ -60,7 +60,7 @@ jobs:
             - name: Start EC2 Test Instance
               run: |
                   aws ec2 authorize-security-group-ingress \
-                  --group-name sg-03b1f6e5cbfe9a562 \
+                  --group-name testWebServer \
                   --protocol tcp \
                   --port 3000 \
                   --cidr ${{ steps.ip.outputs.ipv4 }}     
