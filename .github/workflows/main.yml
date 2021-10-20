@@ -37,14 +37,9 @@ jobs:
             
             - name: Test and Zip
               run: |
-                   echo ${{ steps.ip.outputs.ipv4 }}
-                    
-  
-                   cd quoterepo/serverSide
-                    
+                   cd quoterepo/serverSide 
                    TEST=$(node testAllQuotes.js)
-                   echo "${TEST}"
-                    
+                   echo "${TEST}" 
                    SUB='FAIL'
                    if [[ "$TEST" == *"$SUB"* ]]; then
                        echo 'Unit tests fail'
@@ -55,8 +50,6 @@ jobs:
                    ls
                    gzip deployment.tar
   
-  
-                  
             - name: Start EC2 Test Instance
               run: |
                   aws ec2 authorize-security-group-ingress \
