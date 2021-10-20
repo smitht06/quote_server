@@ -63,7 +63,7 @@ jobs:
                   --group-name testWebServer \
                   --protocol tcp \
                   --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}     
+                  --cidr ${{ steps.ip.outputs.ipv4 }}/32     
                   aws ec2 start-instances --instance-ids i-03fd5f81236535b8f
                   
             - name: Push revision to S3
