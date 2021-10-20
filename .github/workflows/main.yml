@@ -37,7 +37,7 @@ jobs:
             
             - name: Test and Zip
               run: |
-                   aws --version
+                   echo ${{ steps.ip.outputs.ipv4 }}
                     
   
                    cd quoterepo/serverSide
