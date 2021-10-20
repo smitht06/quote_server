@@ -62,7 +62,7 @@ jobs:
                   export MY_SECURITY_GROUP="sg-03b1f6e5cbfe9a562"
                   aws ec2 authorize-security-group-ingress \
                   --group-name MY_SECURITY_GROUP \
-                  --protocol http \
+                  --protocol tcp \
                   --port 8080 \
                   --cidr ${{ steps.ip.outputs.ipv4 }}     
                   aws ec2 start-instances --instance-ids i-03fd5f81236535b8f
