@@ -58,7 +58,7 @@ jobs:
                   --port 3000 \
                   --cidr ${{ steps.ip.outputs.ipv4 }}/32 \    
                   aws ec2 start-instances --instance-ids i-03fd5f81236535b8f \
-                  sleep 10
+                  sleep 10 \
                   
             - name: Push revision to S3
               run: |
