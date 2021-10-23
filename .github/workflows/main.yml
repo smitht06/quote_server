@@ -56,10 +56,10 @@ jobs:
                   --group-name testWebServer \
                   --protocol tcp \
                   --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}/32 \    
-                  aws ec2 start-instances --instance-ids i-03fd5f81236535b8f \
-                  sleep 10 \
-                  
+                  --cidr ${{ steps.ip.outputs.ipv4 }}/32     
+                  aws ec2 start-instances --instance-ids i-03fd5f81236535b8f
+                  sleep 10
+                         
             - name: Push revision to S3
               run: |
                   aws deploy push \
@@ -94,8 +94,8 @@ jobs:
 
             - name: Create Production Deployment
               run: |
-                  aws ec2 start-instances --instance-ids i-0f3181b30b7dabf67 \
-                  sleep 10 \
+                  aws ec2 start-instances --instance-ids i-0f3181b30b7dabf67 
+                  sleep 10
                   aws deploy create-deployment \
                    --application-name quote \
                    --deployment-group-name quote_prod \
