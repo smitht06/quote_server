@@ -93,4 +93,12 @@ jobs:
                    --deployment-group-name quote_prod \
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
-                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \      
+                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
+                   
+            - name: clean up
+              run: |
+                  revoke-security-group-ingress \
+                  --group-name testWebServer \
+                  --protocol tcp \
+                  --port 3000 \
+                  --cidr ${{ steps.ip.outputs.ipv4 }}/32       
