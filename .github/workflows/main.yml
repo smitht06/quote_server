@@ -83,11 +83,7 @@ jobs:
                   curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=hi
                   curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=dsfjsdlkf
                   curl --connect-timeout 2.37 http://54.172.76.252:3000
-                  revoke-security-group-ingress \
-                  --group-name testWebServer \
-                  --protocol tcp \
-                  --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}/32
+                  
 
 
             - name: Create Production Deployment
