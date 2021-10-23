@@ -93,6 +93,7 @@ jobs:
 
             - name: Create Production Deployment
               run: |
+                  aws ec2 start-instances --instance-ids i-0f3181b30b7dabf67 \
                   aws deploy create-deployment \
                    --application-name quote \
                    --deployment-group-name quote_prod \
