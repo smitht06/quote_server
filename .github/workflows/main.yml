@@ -37,6 +37,7 @@ jobs:
             
             - name: Test and Zip
               run: |
+                   echo ${{ steps.ip.outputs.ipv4 }}
                    cd quoterepo/serverSide 
                    TEST=$(node testAllQuotes.js)
                    echo "${TEST}" 
@@ -81,12 +82,19 @@ jobs:
               run: |
                   curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=hi
                   curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=dsfjsdlkf
-                  curl --connect-timeout 2.37 http://54.172.76.252:300
-            - name: Create Deployment
+                  curl --connect-timeout 2.37 http://54.172.76.252:3000
+                  revoke-security-group-ingress \
+                  --group-name testWebServer \
+                  --protocol tcp \
+                  --port 3000 \
+                  --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
+
+            - name: Create Production Deployment
               run: |
                   aws deploy create-deployment \
                    --application-name quote \
-                   --deployment-group-name quote \
+                   --deployment-group-name quote_prod \
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
-                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
+                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \      
