@@ -79,6 +79,6 @@ jobs:
                          
             - name: Test Quote Server 
               run: |
-                  curl http://54.172.76.252:3000/search?search_string=hi
-                  curl http://54.172.76.252:3000/search?search_string=dsfjsdlkf
-                  curl http://54.172.76.252:300
+                  curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=hi
+                  curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=dsfjsdlkf
+                  curl --connect-timeout 2.37 http://54.172.76.252:300
