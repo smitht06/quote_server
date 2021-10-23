@@ -80,12 +80,10 @@ jobs:
                          
             - name: Test Quote Server 
               run: |
-                  curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=hi
-                  curl --connect-timeout 2.37 http://54.172.76.252:3000/search?search_string=dsfjsdlkf
-                  curl --connect-timeout 2.37 http://54.172.76.252:3000
+                  curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=hi
+                  curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=dsfjsdlkf
+                  curl --connect-timeout 2.37 http://34.230.204.68:3000
                   
-
-
             - name: Create Production Deployment
               run: |
                   aws deploy create-deployment \
@@ -94,10 +92,10 @@ jobs:
                    --deployment-config-name CodeDeployDefault.OneAtATime \
                    --file-exists-behavior OVERWRITE \
                    --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
-                   
+
             - name: clean up
               run: |
-                  revoke-security-group-ingress \
+                  aws ec2 revoke-security-group-ingress \
                   --group-name testWebServer \
                   --protocol tcp \
                   --port 3000 \
