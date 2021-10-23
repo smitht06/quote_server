@@ -48,7 +48,6 @@ jobs:
                        fi
                    cd ..
                    tar -cvf deployment.tar data serverSide
-                   ls
                    gzip deployment.tar
   
             - name: Start EC2 Test Instance
@@ -83,7 +82,15 @@ jobs:
                   curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=hi
                   curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=dsfjsdlkf
                   curl --connect-timeout 2.37 http://34.230.204.68:3000
-                  
+            
+            - name: Revoke runner access to EC2 test instance
+              run: |
+                  aws ec2 revoke-security-group-ingress \
+                  --group-name testWebServer \
+                  --protocol tcp \
+                  --port 3000 \
+                  --cidr ${{ steps.ip.outputs.ipv4 }}/32    
+
             - name: Create Production Deployment
               run: |
                   aws deploy create-deployment \
@@ -93,10 +100,8 @@ jobs:
                    --file-exists-behavior OVERWRITE \
                    --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
 
-            - name: clean up
+            - name: Test Production Server 
               run: |
-                  aws ec2 revoke-security-group-ingress \
-                  --group-name testWebServer \
-                  --protocol tcp \
-                  --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}/32       
+                  curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=hi
+                  curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=dsfjsdlkf
+                  curl --connect-timeout 2.37 http://34.229.31.32:3000   
