@@ -61,12 +61,12 @@ jobs:
                   
             - name: Push revision to S3
               run: |
-                aws deploy push \
-                 --application-name quote \
-                 --description "This is a revision again" \
-                 --ignore-hidden-files \
-                 --s3-location s3://asmit-work-bucket/deployment.tar.gz \
-                 --source .      
+                  aws deploy push \
+                  --application-name quote \
+                  --description "This is a revision again" \
+                  --ignore-hidden-files \
+                  --s3-location s3://asmit-work-bucket/deployment.tar.gz \
+                  --source .      
 
             - name: Create Deployment
               run: |
@@ -77,3 +77,8 @@ jobs:
                    --file-exists-behavior OVERWRITE \
                    --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
                          
+            - name: Test Quote Server 
+              run: |
+                  curl http://54.172.76.252:3000/search?search_string=hi
+                  curl http://54.172.76.252:3000/search?search_string=dsfjsdlkf
+                  curl http://54.172.76.252:300
