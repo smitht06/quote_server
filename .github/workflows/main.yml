@@ -105,4 +105,4 @@ jobs:
               run: |
                   curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=hi
                   curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=dsfjsdlkf
-                  curl --connect-timeout 2.37 http://34.229.31.32:3000   
+                  curl --connect-timeout 2.37 http://34.229.31.32:300   
