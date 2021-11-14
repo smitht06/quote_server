@@ -1,6 +1,0 @@
-#!/bin/bash
-source /home/ec2-user/.bash_profile
-yum update -y
-sudo aws s3 cp "s3://asmit-work-bucket/start.sh" start.sh
-sudo aws s3 cp "s3://asmit-work-bucket/deployment.tar.gz" deployment.tar.gz
-sudo chmod +x start.sh 

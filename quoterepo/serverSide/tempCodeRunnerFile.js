@@ -1,0 +1,1 @@
+/home/ec2-user/quoterepo/quoterepo/data/quotes_all.csv

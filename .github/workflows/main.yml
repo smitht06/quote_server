@@ -46,65 +46,8 @@ jobs:
                        echo 'Unit tests fail'
                        exit 1 
                        fi
-                   cd ..
-                   tar -cvf deployment.tar data serverSide
-                   gzip deployment.tar
-  
-            - name: Start EC2 Test Instance
-              run: |
-                  aws ec2 authorize-security-group-ingress \
-                  --group-name testWebServer \
-                  --protocol tcp \
-                  --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}/32     
-                  aws ec2 start-instances --instance-ids i-03fd5f81236535b8f
-                  sleep 10
-                         
-            - name: Push revision to S3
-              run: |
-                  aws deploy push \
-                  --application-name quote \
-                  --description "This is a revision again" \
-                  --ignore-hidden-files \
-                  --s3-location s3://asmit-work-bucket/deployment.tar.gz \
-                  --source .      
-
-            - name: Create Deployment
-              run: |
-                  aws deploy create-deployment \
-                   --application-name quote \
-                   --deployment-group-name quote \
-                   --deployment-config-name CodeDeployDefault.OneAtATime \
-                   --file-exists-behavior OVERWRITE \
-                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
-                         
-            - name: Test Quote Server 
-              run: |
-                  curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=hi
-                  curl --connect-timeout 2.37 http://34.230.204.68:3000/search?search_string=dsfjsdlkf
-                  curl --connect-timeout 2.37 http://34.230.204.68:3000
-            
-            - name: Revoke runner access to EC2 test instance
-              run: |
-                  aws ec2 revoke-security-group-ingress \
-                  --group-name testWebServer \
-                  --protocol tcp \
-                  --port 3000 \
-                  --cidr ${{ steps.ip.outputs.ipv4 }}/32    
-
-            - name: Create Production Deployment
-              run: |
-                  aws ec2 start-instances --instance-ids i-0f3181b30b7dabf67 
-                  sleep 10
-                  aws deploy create-deployment \
-                   --application-name quote \
-                   --deployment-group-name quote_prod \
-                   --deployment-config-name CodeDeployDefault.OneAtATime \
-                   --file-exists-behavior OVERWRITE \
-                   --s3-location bucket=asmit-work-bucket,key=deployment.tar.gz,bundleType=zip \
-
-            - name: Test Production Server 
-              run: |
-                  curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=hi
-                  curl --connect-timeout 2.37 http://34.229.31.32:3000/search?search_string=dsfjsdlkf
-                  curl --connect-timeout 2.37 http://34.229.31.32:3000   
+                   docker build -t quoterepo .
+                   docker tag quoterepo:latest 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest 
+                   docker push 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest
+          
+                   
