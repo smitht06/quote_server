@@ -46,6 +46,7 @@ jobs:
                        echo 'Unit tests fail'
                        exit 1 
                        fi
+                   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 199068203283.dkr.ecr.us-east-1.amazonaws.com    
                    docker build -t quoterepo .
                    docker tag quoterepo:latest 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest 
                    docker push 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest
