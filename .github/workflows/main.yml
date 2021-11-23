@@ -50,6 +50,8 @@ jobs:
                    docker build -t quoterepo .
                    docker tag quoterepo:latest public.ecr.aws/w6u2o8k8/quoterepo:latest
                    docker push public.ecr.aws/w6u2o8k8/quoterepo:latest
+                   aws eks --region us-east-1 update-kubeconfig --name EKS-Cluster
+
                    kubectl apply -f deployment.yml
 
           
