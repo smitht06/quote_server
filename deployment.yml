@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: back-end
+          image: sha256:b7ec853bc57bdce8253f2798334f76c4c4da9c83e82c2c318f6b4f31ba15c392
+          ports:
+            - containerPort: 3000
