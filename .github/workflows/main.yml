@@ -46,10 +46,10 @@ jobs:
                        echo 'Unit tests fail'
                        exit 1 
                        fi
-                   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 199068203283.dkr.ecr.us-east-1.amazonaws.com    
+                   aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/w6u2o8k8
                    docker build -t quoterepo .
-                   docker tag quoterepo:latest 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest 
-                   docker push 199068203283.dkr.ecr.us-east-1.amazonaws.com/quoterepo:latest
+                   docker tag quoterepo:latest public.ecr.aws/w6u2o8k8/quoterepo:latest
+                   docker push public.ecr.aws/w6u2o8k8/quoterepo:latest
                    kubectl apply -f deployment.yml
 
           
